@@ -23,4 +23,4 @@ jobs:
         run: pip install mygeotab gspread oauth2client
 
       - name: Rodar o script principal
-        run: python "teste no sheets.py"
+        run: python "sheetsautomatico.py"
