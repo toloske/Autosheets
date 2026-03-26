@@ -2,6 +2,8 @@ import mygeotab
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime, timezone, timedelta
+import os
+import json
 
 # --- 1. CONFIGURAÇÕES GEOTAB ---
 BASES = [
@@ -64,7 +66,6 @@ def buscar_status_geotab():
                     if not is_communicating:
                         tempo_off = agora - last_comm
                         
-                        # --- AQUI ESTÁ A MUDANÇA: PEGA APENAS DIAS INTEIROS ---
                         dias_inteiros = tempo_off.days 
                         
                         if dias_inteiros == 0:
@@ -154,7 +155,17 @@ def atualizar_planilha():
     print("Conectando ao Google Sheets...")
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
     
-    credenciais = ServiceAccountCredentials.from_json_keyfile_name(ARQUIVO_CREDENCIAIS, scope)
+    # --- MÁGICA PARA O GITHUB: LÊ DA MEMÓRIA EM VEZ DO ARQUIVO ---
+    credenciais_github = os.environ.get('CREDENCIAIS_GCP')
+    
+    if credenciais_github:
+        print("Lendo chaves secretas do GitHub...")
+        info_credenciais = json.loads(credenciais_github)
+        credenciais = ServiceAccountCredentials.from_json_keyfile_dict(info_credenciais, scope)
+    else:
+        print("Lendo chaves do arquivo local...")
+        credenciais = ServiceAccountCredentials.from_json_keyfile_name(ARQUIVO_CREDENCIAIS, scope)
+
     cliente_sheets = gspread.authorize(credenciais)
 
     planilha = cliente_sheets.open_by_key(PLANILHA_ID)
