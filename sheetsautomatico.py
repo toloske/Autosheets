@@ -2,8 +2,6 @@ import mygeotab
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime, timezone, timedelta
-import os
-import json
 
 # --- 1. CONFIGURAÇÕES GEOTAB ---
 BASES = [
@@ -27,7 +25,6 @@ NOME_DA_ABA = "Visão da Frota"
 ARQUIVO_CREDENCIAIS = 'porjeto-rodar-online-geotab-133b08a54dd7.json'
 
 def normalizar_placa(placa):
-    """Remove traços, espaços e deixa tudo maiúsculo para garantir o Match perfeito"""
     if not placa:
         return ""
     return str(placa).replace("-", "").replace(" ", "").upper().strip()
@@ -42,7 +39,6 @@ def buscar_status_geotab():
             client = mygeotab.API(username=config['user'], password=config['password'], database=config['db'])
             client.authenticate()
 
-            # Mapeia ID -> Placa 
             devices = client.call('Get', typeName='Device')
             mapa_id_placa = {}
             for d in devices:
@@ -65,7 +61,6 @@ def buscar_status_geotab():
                     
                     if not is_communicating:
                         tempo_off = agora - last_comm
-                        
                         dias_inteiros = tempo_off.days 
                         
                         if dias_inteiros == 0:
@@ -90,7 +85,6 @@ def buscar_status_geotab():
                         "odometro": "Buscando..."
                     }
                     
-                    # Chamada 1: Hodômetro Ajustado
                     calls_odometro.append((
                         'Get', {
                             'typeName': 'StatusData',
@@ -102,7 +96,6 @@ def buscar_status_geotab():
                             }
                         }
                     ))
-                    # Chamada 2: Hodômetro Físico (Cru)
                     calls_odometro.append((
                         'Get', {
                             'typeName': 'StatusData',
@@ -116,7 +109,6 @@ def buscar_status_geotab():
                     ))
                     call_placas.extend([placa_limpa_geotab, placa_limpa_geotab])
 
-            # Executa a busca em lote
             if calls_odometro:
                 print(f"Buscando hodômetros para {len(calls_odometro) // 2} veículos...")
                 chunk_size = 200 
@@ -135,7 +127,6 @@ def buscar_status_geotab():
                             
                             valor_km = "Sem dado"
                             
-                            # Tenta Ajustado, se falhar, tenta Cru
                             if isinstance(res_adj, list) and len(res_adj) > 0:
                                 valor_km = round(res_adj[-1].get('data', 0) / 1000)
                             elif isinstance(res_raw, list) and len(res_raw) > 0:
@@ -155,23 +146,7 @@ def atualizar_planilha():
     print("Conectando ao Google Sheets...")
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
     
-    # --- MÁGICA PARA O GITHUB: LÊ DA MEMÓRIA EM VEZ DO ARQUIVO ---
-    credenciais_github = os.environ.get('CREDENCIAIS_GCP')
-    
-    if credenciais_github:
-        print("Lendo chaves secretas do GitHub...")
-        info_credenciais = json.loads(credenciais_github)
-        
-        # --- A CORREÇÃO DE OURO ---
-        # Força a correção das quebras de linha que o GitHub bagunça na memória
-        if 'private_key' in info_credenciais:
-            info_credenciais['private_key'] = info_credenciais['private_key'].replace('\\n', '\n')
-            
-        credenciais = ServiceAccountCredentials.from_json_keyfile_dict(info_credenciais, scope)
-    else:
-        print("Lendo chaves do arquivo local...")
-        credenciais = ServiceAccountCredentials.from_json_keyfile_name(ARQUIVO_CREDENCIAIS, scope)
-
+    credenciais = ServiceAccountCredentials.from_json_keyfile_name(ARQUIVO_CREDENCIAIS, scope)
     cliente_sheets = gspread.authorize(credenciais)
 
     planilha = cliente_sheets.open_by_key(PLANILHA_ID)
