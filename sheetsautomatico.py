@@ -22,7 +22,7 @@ BASES = [
 # --- 2. CONFIGURAÇÕES GOOGLE SHEETS ---
 PLANILHA_ID = "14Ym6mM2sbsAG7Rme__6F5R7Y4tBJ9Dk9BAJP4O72cJ0"
 NOME_DA_ABA = "Visão da Frota"
-ARQUIVO_CREDENCIAIS = 'porjeto-rodar-online-geotab-e5ad983c2607.json'
+ARQUIVO_CREDENCIAIS = 'porjeto-rodar-online-geotab-133b08a54dd7.json'
 
 def normalizar_placa(placa):
     """Remove traços, espaços e deixa tudo maiúsculo para garantir o Match perfeito"""
