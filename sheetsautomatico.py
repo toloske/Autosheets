@@ -161,6 +161,12 @@ def atualizar_planilha():
     if credenciais_github:
         print("Lendo chaves secretas do GitHub...")
         info_credenciais = json.loads(credenciais_github)
+        
+        # --- A CORREÇÃO DE OURO ---
+        # Força a correção das quebras de linha que o GitHub bagunça na memória
+        if 'private_key' in info_credenciais:
+            info_credenciais['private_key'] = info_credenciais['private_key'].replace('\\n', '\n')
+            
         credenciais = ServiceAccountCredentials.from_json_keyfile_dict(info_credenciais, scope)
     else:
         print("Lendo chaves do arquivo local...")
