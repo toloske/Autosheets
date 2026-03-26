@@ -1,0 +1,26 @@
+name: Atualizar Dashboard Geotab
+
+# Configura o gatilho para rodar de hora em hora
+on:
+  schedule:
+    - cron: '0 * * * *' # Roda no minuto zero de todas as horas
+  workflow_dispatch: # Cria um botão para você rodar manualmente quando quiser
+
+jobs:
+  atualizar-planilha:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Pegar os arquivos do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar o Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Instalar as bibliotecas necessárias
+        run: pip install mygeotab gspread oauth2client
+
+      - name: Rodar o script principal
+        run: python "teste no sheets.py"
