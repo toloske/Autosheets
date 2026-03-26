@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "porjeto-rodar-online-geotab",
+  "private_key_id": "133b08a54dd77c9eab47e124b90e9350b7c5a226",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDywngNPmgViIOf\nj2WhI/g4Cma3IsAQ6xYGA+fqvrs3yjNi7dEzEtaKG3mLRSdwIKRpIw+l1IUG/aMX\nC1/LoE5GW/AfeKPL6veAzcCGfND4giOBFisaOM1eahrOuJjeK0vv4XVzvbbjfaIT\nPOZlyt3o9M4sfB7P5DMpQmPHbp/KaTUSNCUGbpi3RrNdt8lx2gkeL+5KUcjcuj73\npHOMoOnak/19EMEkmN/2icEEOYgkcY8tRME2xZQCb1xyy2MUrh9OYFPeD4l2fD2i\nmFblSEE8GZ1Punqg874p0GHB5dvujZCcioa1BuEaZV/lb1qbeJMzLQv1eDaM9xhu\n0vHR6CwrAgMBAAECggEAP6yunJqv5mYGUEXmnFu48coYoxSkWEuxXSaNIE+i/8Ez\ntVE3vDPGvjbyrIsZCxokxccChba2pdzFeHftSpXjsiTPWRHltMkO3mQZia0Xivdn\npKZR6/DWPVuLaImW3z9wDZ2Plyo93HHJn04sCKsrhb0gjx6HXnQ2zy2wylDD7O0k\nzFHFt25ibIASFie2u2aDTxrH/WCY9YP/lx0Yj2166zoIzJi3C8OoelpjEkfp3Xyh\nCJ/E4K39iSIjKgEpazLFTCZveSGeAthu39JrvTA/PpPVVfw5XyfAY5QWr2rRIVUw\nOXBHoDpQw/Pew5QxBhe88V7PQ+AzQq4X3ujWhNobwQKBgQD7RmqO+kW4xctmn48O\nRu/LIdV0IwN0GnVdLRdWHFRKwbt+cnyLEK07XDhePbd9YEz6/0RbB3iNA2lFcBOR\ndAHkLh3KyB//N6BTFCZe6YGHehuammiXkwob7nSfeFMoYeUCQee23lWb0/NzSgzp\nskHCXPJMyYEXkXiv7cDRBCG5kQKBgQD3Uw+y67j5wOU0pMF0Q2jJeTW022A6Ck3c\nS1SPAAo54L8tx3OK7W2XHDJE83BCJR1c+EmltX+CYLFgqozguR+M13hNdoqNfDWD\nUZNdKwt9/02RJEZPa6iH8SCxG+QBbzJRMlRnDF2PhktIYcvewMFMqlSXKR0rRTh+\nxKvx9P4L+wKBgQDHch4UfNyoi/8l5tJS/8VIFAPsmfocxv+PRMI4LGZPrDSZamAm\ntcb6zflD/HLPhoez1rg4FNb//swpPIubsVvq9RvaoDydhFayetT2ExwoH6kXbyZD\n4YdtojlZdtVywTlYMF2uzg1fkb20LfvP5xjBIKuGfY8E2QfVhL6+aSwnsQKBgASd\niTJ2kaoffmeAF5ga1e7Ek0r/uQj8Pj25LifJAWfZGNg6254hFiV2wj1lKZgiZyzf\n+UfdXjbJpSW/qQdcjQks0DLp3mYLhlggApb/gaRlSkZGHgXHZYq75jdH5PZd49t+\nC/MsWOafw/Hi2VIb2L+cgh2cB85R6V78PpUyVDdXAoGAXWnEtQOGt6WHrf26MofQ\n1i2Eu3Gr7Oxm3oXdftzahF8WX6oDh7tN7vWlpr5nBvYFvTkVhaGCzdYmAmep6EYj\n9/Raym+3ieZwB61OJdD3ISB3PwpX8wUZipBMqtgKu7WPVgEkW7aYt3GjdM5fFIbw\njFm45LEfYVHUGpAfoxUdv8o=\n-----END PRIVATE KEY-----\n",
+  "client_email": "hitalocorrea@porjeto-rodar-online-geotab.iam.gserviceaccount.com",
+  "client_id": "110589367711901328192",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hitalocorrea%40porjeto-rodar-online-geotab.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
