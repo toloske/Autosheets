@@ -21,7 +21,11 @@ jobs:
       - name: Instalar as bibliotecas necessárias
         run: pip install mygeotab gspread oauth2client
 
-      - name: Rodar o script principal
+      - name: Criar arquivo JSON de forma 100% segura
         env:
-          CREDENCIAIS_GCP: ${{ secrets.CREDENCIAIS_GCP }}
+          CHAVE_JSON: ${{ secrets.CREDENCIAIS_GCP }}
+        run: |
+          python -c "import os; f = open('porjeto-rodar-online-geotab-133b08a54dd7.json', 'w'); f.write(os.environ['CHAVE_JSON']); f.close()"
+
+      - name: Rodar o script principal
         run: python sheetsautomatico.py
